@@ -1,0 +1,29 @@
+{
+  "name": "chuangan-ruikong-ai-github",
+  "version": "1.0.0",
+  "description": "创安睿控产品手册知识问答：本地嵌入、DeepSeek 回答、原文引用",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node --env-file=.env server/local.mjs",
+    "test": "node tests/http.mjs",
+    "test:live": "node --env-file=.env tests/live-rag.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z911720037-droid/chuangan-ruikong-ai-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/z911720037-droid/chuangan-ruikong-ai-demo/issues"
+  },
+  "homepage": "https://github.com/z911720037-droid/chuangan-ruikong-ai-demo#readme",
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.0"
+  },
+  "private": true
+}

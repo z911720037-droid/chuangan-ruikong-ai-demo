@@ -1,0 +1,6 @@
+import fs from 'node:fs';import http from 'node:http';import {createIndex} from './rag.mjs';import {createHandler} from './handler.mjs';import {localProviderFetch} from './local-provider.mjs';
+const data=process.env.RAG_DATA_DIR;if(!data)throw new Error('RAG_DATA_DIR required');
+const index=createIndex(JSON.parse(fs.readFileSync(data+'/knowledge-local.json','utf8')));
+const assets={};for(const [name,type] of [['index.html','text/html; charset=utf-8'],['app.js','text/javascript; charset=utf-8'],['styles.css','text/css; charset=utf-8']])assets['/'+name]={body:fs.readFileSync(new URL('../'+name,import.meta.url),'utf8'),type};
+const handler=createHandler(index,assets,localProviderFetch);const port=Number(process.env.PORT||8787);
+http.createServer(async(req,res)=>{let chunks=[],size=0;for await(const b of req){size+=b.length;if(size>12000){res.writeHead(413);res.end();return}chunks.push(b)}const request=new Request('http://127.0.0.1:'+port+req.url,{method:req.method,headers:req.headers,...(req.method==='GET'||req.method==='HEAD'?{}:{body:Buffer.concat(chunks)})});const response=await handler(request,process.env);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()))}).listen(port,'127.0.0.1',()=>console.log('Knowledge service: http://127.0.0.1:'+port));

@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import {createHandler} from '../server/handler.mjs';import {createIndex} from '../server/rag.mjs';
+const index=createIndex({documents:[],chunks:[]});const handle=createHandler(index,{'/index.html':{body:'test',type:'text/html'}});
+const call=(path,options={},env={})=>handle(new Request('https://example.test'+path,options),env);
+assert.equal((await call('/')).status,200);
+assert.equal((await call('/.env')).status,404);
+assert.equal((await call('/knowledge.sqlite')).status,404);
+assert.equal((await call('/api/chat')).status,405);
+assert.equal((await call('/api/chat',{method:'POST',headers:{'content-type':'application/json',origin:'https://evil.test'},body:'{}'})).status,403);
+assert.equal((await call('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:'bad'})).status,400);
+assert.equal((await call('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:'CA100 频率'})})).status,503);
+assert.equal((await (await call('/api/catalog')).json()).ready,false);
+console.log('8 HTTP boundary checks passed; no model calls or simulated answers.');

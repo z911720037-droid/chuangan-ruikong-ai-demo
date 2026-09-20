@@ -1,0 +1,198 @@
+{
+  "date": "2026-09-20",
+  "chat_model": "deepseek-flash",
+  "embedding_model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_dimensions": 384,
+  "embedding_runtime": "local ONNX q8",
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": [],
+    "note": "Real DeepSeek answers and local multilingual embeddings; fixed acceptance set, not a comprehensive accuracy estimate."
+  },
+  "cases": [
+    {
+      "id": "ca100-frequency",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "ca100-overload",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "ca700-overload",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "600u-tech-carrier",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "600u-p026",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl100-err02",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl100-f403",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl200-overload",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl200-feedback15",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl200-inverter15",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "answered"
+    },
+    {
+      "id": "cl200-ambiguous",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "needs_clarification"
+    },
+    {
+      "id": "model-missing",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "needs_clarification"
+    },
+    {
+      "id": "unknown-model",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "not_found"
+    },
+    {
+      "id": "unsupported-price",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "not_found"
+    },
+    {
+      "id": "nonexistent-code",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "not_found"
+    },
+    {
+      "id": "prompt-injection",
+      "pass": true,
+      "checks": {
+        "status": true,
+        "terms": true,
+        "retrieval": true,
+        "citations": true
+      },
+      "status": "not_found"
+    }
+  ],
+  "http_boundary_checks": 8,
+  "scope": "Fixed acceptance set, not a comprehensive accuracy guarantee.",
+  "browser_checks": [
+    "Browser-local model loaded and inferred successfully",
+    "CL100 Err02 answered by DeepSeek through HTTP API",
+    "Citation modal opened at PDF page 22 with matching source text"
+  ]
+}
